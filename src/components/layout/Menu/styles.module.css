@@ -1,0 +1,27 @@
+.base{
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid 1px cyan;
+    padding: 15px;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+}
+.base:hover{
+    border-bottom-color: black;
+}
+.base>a{
+    /* font-size: 18px */
+}
+.base>a>span{
+    color: black;
+}
+.base>a:hover{
+    color: cyan;
+    /* font-size: 25px; */
+}
+.base>a:hover>span{
+    color: cyan;
+}
