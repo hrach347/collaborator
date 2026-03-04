@@ -1,16 +1,16 @@
 'use client'
-import Title from "@/components/ui/Title";
 import { useEffect, useState } from "react";
+import Title from "@/components/ui/Title";
 
 export default function Home() {
   const [users, setUsers] = useState([])
-  useEffect(() => {
-    fetch("/api/users")
-      .then(res => res.json())
-      .then(data => {
-        setUsers(data.users)
-      })
+
+  useEffect(async () => {
+    const response = await fetch("/api/users")
+    const data = await response.json()
+    setUsers(data.users)
   }, [])
+
   return (
     <div>
       <Title>Collaborate with anyone</Title>
