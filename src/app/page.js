@@ -5,10 +5,13 @@ import Title from "@/components/ui/Title";
 export default function Home() {
   const [users, setUsers] = useState([])
 
-  useEffect(async () => {
-    const response = await fetch("/api/users")
-    const data = await response.json()
-    setUsers(data.users)
+  useEffect(() => {
+    async function request() {
+      const response = await fetch("/api/users")
+      const data = await response.json()
+      setUsers(data.users)
+    }
+    request()
   }, [])
 
   return (
@@ -20,6 +23,9 @@ export default function Home() {
           <h1>{user.name} </h1>
           <a href={user.profile.html_url} target="_blank">{user.profile.html_url}</a>
           <p>{user.profile.company}</p>
+          <br/>
+          <h4>Projects from {user.name} that are open to collaboration</h4>
+          <p>{JSON.stringify(user.projects)}</p>
         </div>
       )}
     </div>
