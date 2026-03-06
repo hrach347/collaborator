@@ -1,8 +1,8 @@
 import NextAuth from "next-auth"
 import GithubProvider from "next-auth/providers/github"
-import { addUser, getMe } from "@/lib/db/db"
+import { addUser, getMe } from "@/lib/controller"
 
-const handler = NextAuth({
+export const authOptions = {
   providers: [
     GithubProvider({
       clientId: process.env.GITHUB_ID,
@@ -22,11 +22,14 @@ const handler = NextAuth({
     async session({ session }) {
       const response = await getMe(session.user.email)
       if (response.status === 200) {
-        session.user.profile = response.user
+        session.user.profile = response.user.profile
+        session.user.projects = response.user.projects
         return session
       }
     }
   }
-})
+}
+
+const handler = NextAuth(authOptions)
 
 export { handler as GET, handler as POST }

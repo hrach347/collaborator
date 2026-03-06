@@ -7,6 +7,7 @@ export default function Menu() {
             <Link href="/"><span>/</span>Home</Link>
             <Link href="/sign-in"><span>/</span>Sign In</Link>
             <Link href="/dashboard"><span>/</span>Dashboard</Link>
+            <Link href="/projects"><span>/</span>Projects</Link>
         </div>
     )
 }
